@@ -172,7 +172,7 @@ fn reset_game(
     *player_lives = 3;
     balls.clear();
     balls.push(Ball::new(vec2(
-        screen_width() * 0.5f32,
+        screen_width() * 0.5f32 - BALL_SIZE * 0.5f32,
         screen_height() * 0.5f32,
     )));
     blocks.clear();
@@ -213,7 +213,7 @@ async fn main() {
     let mut blocks = Vec::new();
     let mut balls = Vec::<Ball>::new();
     balls.push(Ball::new(vec2(
-        screen_width() * 0.5f32,
+        screen_width() * 0.5f32 - BALL_SIZE * 0.5f32,
         screen_height() * 0.6f32,
     )));
 
@@ -269,7 +269,7 @@ async fn main() {
                     game_state = GameState::LevelCompleted;
                 }
             }
-            GameState::LevelCompleted | GameState::Dead=> {
+            GameState::LevelCompleted | GameState::Dead => {
                 if is_key_pressed(KeyCode::Space) {
                     game_state = GameState::Menu;
                     reset_game(
