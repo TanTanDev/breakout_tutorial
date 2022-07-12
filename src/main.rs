@@ -143,18 +143,12 @@ fn resolve_collision(a: &mut Rect, vel: &mut Vec2, b: &Rect) -> bool {
         true => {
             // bounce on y
             a.y -= to_signum.y * intersection.h;
-            match to_signum.y > 0f32 {
-                true => vel.y = -vel.y.abs(),
-                false => vel.y = vel.y.abs(),
-            }
+            vel.y = -to_signum.y * vel.y.abs();
         }
         false => {
             // bounce on x
             a.x -= to_signum.x * intersection.w;
-            match to_signum.x < 0f32 {
-                true => vel.x = vel.x.abs(),
-                false => vel.x = -vel.x.abs(),
-            }
+            vel.x = -to_signum.x * vel.x.abs();
         }
     }
     true
