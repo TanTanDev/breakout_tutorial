@@ -1,7 +1,7 @@
 use macroquad::prelude::*;
 
-const BLOCK_SIZE: Vec2 = const_vec2!([100f32, 40f32]);
-const PLAYER_SIZE: Vec2 = const_vec2!([150f32, 40f32]);
+const BLOCK_SIZE: Vec2 = Vec2::from_array([100f32, 40f32]);
+const PLAYER_SIZE: Vec2 = Vec2::from_array([150f32, 40f32]);
 const PLAYER_SPEED: f32 = 700f32;
 const BALL_SIZE: f32 = 50f32;
 const BALL_SPEED: f32 = 400f32;
@@ -65,7 +65,7 @@ impl Player {
     }
 }
 
-#[derive(PartialEq)]
+#[derive(PartialEq, Eq)]
 pub enum BlockType {
     Regular,
     SpawnBallOnDeath,
